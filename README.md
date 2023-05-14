@@ -11,6 +11,9 @@ If you haven't installed dependencies during setup:
 
     npm install
 
+이거 buffer 버전이 안맞다면서 뭐시기 뜰텐데 (아마 5.5.0버전이 아니라고 나옴) 아래 명령어로 buffer 버전을 바꿔주자. 만약 yarn 없으면 설치 ㄱㄱ
+
+    yarn add buffer@5.5.0
 
 Build and deploy your contract to TestNet with a temporary dev account:
 
