@@ -24,6 +24,8 @@ Test your contract:
     npm test
 
 If you have a frontend, run `npm start`. This will run a dev server.
+ 이까지하면 창 나와야 함
+ 밑에는 지갑이나 환경 설정 추가로 하는거 관련해서 나오는거라 안되면 같이 회의 ㄱㄱ
 
 
 Exploring The Code
