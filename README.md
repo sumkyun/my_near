@@ -10,8 +10,16 @@ Quick Start
 If you haven't installed dependencies during setup:
 
     npm install
+    
+yarn도 설치해주자
 
-이거 buffer 버전이 안맞다면서 뭐시기 뜰텐데 (아마 5.5.0버전이 아니라고 나옴) 아래 명령어로 buffer 버전을 바꿔주자. 만약 yarn 없으면 설치 ㄱㄱ
+    npm install -g yarn
+
+버전 확인 ㄱㄱ
+
+    yarn --version
+
+이거 buffer 버전이 안맞다면서 뭐시기 뜰텐데 (아마 5.5.0버전이 아니라고 나옴) 아래 명령어로 buffer 버전을 바꿔주자.
 
     yarn add buffer@5.5.0
 
