@@ -1,0 +1,2 @@
+near call dev-1684508106444-27785725716650 add_item '{"title":"apple", "description":"amazing"}' --accountId songsk.testnet --deposit 1
+near view dev-1684508106444-27785725716650 get_item '{"idx" : 0}'
