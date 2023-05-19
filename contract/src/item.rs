@@ -16,18 +16,18 @@ impl Contract {
             price: env::attached_deposit(),
         });
         let mut a: &mut Vector<u32> = match self
-            .itemIdx_of_user
+            .item_index_of_user
             .get_mut(&env::predecessor_account_id())
         {
             Some(T) => T,
             None => {
-                self.itemIdx_of_user.insert(
+                self.item_index_of_user.insert(
                     env::predecessor_account_id(),
                     Vector::new(StorageKeys::SubAccount {
                         account_hash: env::sha256_array(env::predecessor_account_id().as_bytes()),
                     }),
                 );
-                self.itemIdx_of_user
+                self.item_index_of_user
                     .get_mut(&env::predecessor_account_id())
                     .unwrap()
             }
@@ -41,11 +41,12 @@ impl Contract {
     }
 
     pub fn get_items_by_id(&self, id: AccountId) -> Vec<&Item> {
-        match self.itemIdx_of_user.get(&id) {
+        match self.item_index_of_user.get(&id) {
             None => vec![],
             Some(T) => T.iter().map(|idx| self.items.get(*idx).unwrap()).collect(),
         }
     }
+
 
     pub fn get_posts(&self, mut from: u32, mut limit: u32) -> Vec<&Item> {
         let mut vec = vec![];

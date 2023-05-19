@@ -12,7 +12,6 @@ mod user;
 pub struct Contract {
     pub items: Vector<Item>,
     pub item_index_of_user: UnorderedMap<AccountId, Vector<u32>>,
-    pub trades:Vector<Trade>,
 }
 
 #[derive(Serialize, Deserialize, BorshDeserialize, BorshSerialize)]

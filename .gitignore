@@ -3,6 +3,7 @@
 
 contract/target
 integration-tests/*
+contract/neardev
 # dependencies
 node_modules
 /.pnp
