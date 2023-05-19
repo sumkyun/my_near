@@ -37,4 +37,5 @@ yarn-error.log*
 #
 frontend/.parcel-cache
 frontend/dist
+.parcel-cache
 
