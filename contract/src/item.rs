@@ -1,62 +1,55 @@
-use crate::{Contract, ContractExt, Item, StorageKeys};
-use near_sdk::store::Vector;
-use near_sdk::{env, log, near_bindgen, AccountId, Promise};
+use crate::*;
+
+#[derive(Serialize, Deserialize, BorshDeserialize, BorshSerialize)]
+#[serde(crate = "near_sdk::serde")]
+pub struct Item {
+    pub seller: AccountId,
+    pub title: String,
+    pub description: String,
+    pub price: Balance,
+    pub views: u32,
+    pub scraps: u32,
+}
 
 #[near_bindgen]
 impl Contract {
     #[payable]
     pub fn add_item(&mut self, title: String, description: String) {
-        log!("{} posted {}!", env::predecessor_account_id(), &title);
+        let preId=env::predecessor_account_id();
+        let curId=env::current_account_id();
+        let deposit=env::attached_deposit();
 
-        Promise::new(env::current_account_id()).transfer(env::attached_deposit());
+        Promise::new(curId).transfer(deposit);
+
+        self.get_user_info_by_id(&preId).items.push(self.items.len());
+
         self.items.push(Item {
-            seller: env::predecessor_account_id(),
+            seller: preId,
             title: title,
             description: description,
-            price: env::attached_deposit(),
+            price: deposit,
+            views:0,
+            scraps:0,
         });
-        let mut a: &mut Vector<u32> = match self
-            .item_index_of_user
-            .get_mut(&env::predecessor_account_id())
-        {
-            Some(T) => T,
-            None => {
-                self.item_index_of_user.insert(
-                    env::predecessor_account_id(),
-                    Vector::new(StorageKeys::SubAccount {
-                        account_hash: env::sha256_array(env::predecessor_account_id().as_bytes()),
-                    }),
-                );
-                self.item_index_of_user
-                    .get_mut(&env::predecessor_account_id())
-                    .unwrap()
-            }
-        };
-        a.push(self.items.len() - 1);
     }
 
     pub fn get_item(&self, idx: u32) -> &Item {
-        log!("get the {}th item", idx);
         self.items.get(idx).unwrap()
     }
 
     pub fn get_items_by_id(&self, id: AccountId) -> Vec<&Item> {
-        match self.item_index_of_user.get(&id) {
+        match self.users.get(&id) {
             None => vec![],
-            Some(T) => T.iter().map(|idx| self.items.get(*idx).unwrap()).collect(),
+            Some(T) => T.items.iter().map(|idx| self.items.get(*idx).unwrap()).collect(),
         }
     }
 
 
     pub fn get_posts(&self, mut from: u32, mut limit: u32) -> Vec<&Item> {
         let mut vec = vec![];
-        while let Some(T) = self.items.get(from) {
-            vec.push(T);
-            from += 1;
-            limit -= 1;
-            if(limit==0){
-                break;
-            }
+        from=self.get_number_of_items()-from-1;
+        while from>=0 && limit>0{
+            vec.push(self.items.get(from).unwrap())
         }
         vec
     }

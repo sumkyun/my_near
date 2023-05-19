@@ -1,61 +1,38 @@
-use near_sdk::borsh::{self, BorshDeserialize, BorshSerialize};
-use near_sdk::serde::{Deserialize, Serialize};
-use near_sdk::store::{UnorderedMap, Vector};
-use near_sdk::{env, near_bindgen, AccountId, Balance, BorshStorageKey, CryptoHash, Timestamp};
-
 mod item;
 mod trade;
 mod user;
+
+pub use crate::item::*;
+pub use crate::trade::*;
+pub use crate::user::*;
+
+use near_sdk::borsh::{self, BorshDeserialize, BorshSerialize};
+use near_sdk::serde::{Deserialize, Serialize};
+use near_sdk::store::{UnorderedMap, Vector, UnorderedSet};
+use near_sdk::{log, env, Promise, near_bindgen, AccountId, Balance, Timestamp};
 
 #[near_bindgen]
 #[derive(BorshDeserialize, BorshSerialize)]
 pub struct Contract {
     pub items: Vector<Item>,
-    pub item_index_of_user: UnorderedMap<AccountId, Vector<u32>>,
-}
-
-#[derive(Serialize, Deserialize, BorshDeserialize, BorshSerialize)]
-#[serde(crate = "near_sdk::serde")]
-pub struct Item {
-    pub seller: AccountId,
-    pub title: String,
-    pub description: String,
-    pub price: Balance,
-}
-
-#[derive(Serialize, Deserialize, BorshDeserialize, BorshSerialize)]
-#[serde(crate = "near_sdk::serde")]
-pub struct Trade{
-    pub seller:AccountId,
-    pub buyer:AccountId,
-    pub item_idx:u32,
-    pub start:Timestamp,
-    pub end:Timestamp,
-}
-
-pub struct UserInfo{
-
+    pub trades: Vector<Trade>,
+    pub users: UnorderedMap<AccountId, UserInfo>,
 }
 
 impl Default for Contract {
     fn default() -> Self {
         Self {
             items: Vector::new(b"p".to_vec()),
-            item_index_of_user: UnorderedMap::new(StorageKeys::Accounts),
+            trades: Vector::new(b"t".to_vec()),
+            users: UnorderedMap::new(b"u".to_vec()),
         }
     }
-}
-
-#[derive(BorshStorageKey, BorshSerialize)]
-pub enum StorageKeys {
-    Accounts,
-    SubAccount { account_hash: CryptoHash },
 }
 
 #[near_bindgen]
 impl Contract {
     pub fn get_number_of_users(&self) -> u32 {
-        self.item_index_of_user.len()
+        self.users.len()
     }
     pub fn get_number_of_items(&self) -> u32 {
         self.items.len()
