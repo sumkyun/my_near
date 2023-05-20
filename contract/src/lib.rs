@@ -1,20 +1,26 @@
 mod item;
 mod trade;
 mod user;
+mod order;
 
 pub use crate::item::*;
 pub use crate::trade::*;
 pub use crate::user::*;
+pub use crate::order::*;
 
 use near_sdk::borsh::{self, BorshDeserialize, BorshSerialize};
 use near_sdk::serde::{Deserialize, Serialize};
 use near_sdk::store::{UnorderedMap, UnorderedSet, Vector};
 use near_sdk::{env, log, near_bindgen, AccountId, Balance, Promise, Timestamp};
 
+type ItemId=u32;
+type TradeId=u32;
+
 #[near_bindgen]
 #[derive(BorshDeserialize, BorshSerialize)]
 pub struct Contract {
     pub items: Vector<Item>,
+    pub orders: UnorderedMap<ItemId, UnorderedSet<(AccountId,AccountId)>>,
     pub trades: Vector<Trade>,
     pub users: UnorderedMap<AccountId, UserInfo>,
 }
@@ -23,6 +29,7 @@ impl Default for Contract {
     fn default() -> Self {
         Self {
             items: Vector::new(b"p".to_vec()),
+            orders: UnorderedMap::new(b"o".to_vec()),
             trades: Vector::new(b"t".to_vec()),
             users: UnorderedMap::new(b"u".to_vec()),
         }

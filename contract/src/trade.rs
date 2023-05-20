@@ -5,22 +5,23 @@ use crate::*;
 pub struct Trade {
     pub seller: AccountId,
     pub buyer: AccountId,
-    pub item_idx: u32,
+    pub item_id: ItemId,
     pub start: Timestamp,
     pub end: Timestamp,
+    pub trade_id:TradeId,
 }
 
 #[near_bindgen]
 impl Contract {
-    pub fn add_trade(&mut self, item_index: u32) {
+    pub fn add_trade(&mut self, item_id: ItemId) {
         self.trades.push(Trade {
-            seller: self.items.get(item_index).unwrap().seller.clone(),
+            seller: self.items.get(item_id).unwrap().seller.clone(),
             buyer: env::predecessor_account_id(),
-            item_idx: item_index,
-            start: env::block_timestamp(),
-            end: env::block_timestamp()+259200000000,
+            item_id: item_id,
+            start: env::block_timestamp_ms(),
+            end: env::block_timestamp_ms()+259200000,
+            trade_id: self.trades.len(),
         })
-        
     }
 
     pub fn get_trades_by_id(&self, id: AccountId) -> Vec<&Trade> {
