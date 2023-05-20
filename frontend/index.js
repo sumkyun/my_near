@@ -1,5 +1,6 @@
 import 'regenerator-runtime/runtime';
 import { Wallet } from './near-wallet';
+import { getItem } from './assets/js/buy';
 
 const CONTRACT_ADDRESS = process.env.CONTRACT_NAME;
 
@@ -17,7 +18,8 @@ window.onload = async () => {
     signedOutFlow();
   }
 
-  getGreeting();
+  console.log("window loaded");
+  getItem();
 };
 
 // Button clicks
