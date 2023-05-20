@@ -20,7 +20,7 @@ type TradeId=u32;
 #[derive(BorshDeserialize, BorshSerialize)]
 pub struct Contract {
     pub items: Vector<Item>,
-    pub orders: UnorderedMap<ItemId, UnorderedSet<(AccountId,AccountId)>>,
+    pub orders: UnorderedMap<ItemId, UnorderedSet<AccountId>>,
     pub trades: Vector<Trade>,
     pub users: UnorderedMap<AccountId, UserInfo>,
 }

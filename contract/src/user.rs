@@ -4,6 +4,7 @@ use crate::*;
 pub struct UserInfo {
     pub items_index: Vector<u32>,
     pub trades_index: Vector<u32>,
+    pub orders_index: UnorderedSet<u32>,
 }
 
 impl UserInfo {
@@ -14,9 +15,14 @@ impl UserInfo {
         let mut prefix2 = Vec::with_capacity(33);
         prefix2.push(b'z');
         prefix2.extend(env::sha256(id.as_bytes()));
+        let mut prefix3 = Vec::with_capacity(33);
+        prefix3.push(b'x');
+        prefix3.extend(env::sha256(id.as_bytes()));
+        
         UserInfo {
             items_index: Vector::new(prefix1),
             trades_index: Vector::new(prefix2),
+            orders_index:UnorderedSet::new(prefix3),
         }
     }
 }

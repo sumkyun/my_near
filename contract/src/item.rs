@@ -24,19 +24,16 @@ pub enum State {
 impl Contract {
     #[payable]
     // 판매글 등록하기
-    pub fn add_item(&mut self, title: String, description: String, src: String) {
-        // 돈 보내기
-        Promise::new(env::predecessor_account_id()).transfer(env::attached_deposit());
-
-        let item_id=self.items.len();
-        let seller=env::predecessor_account_id();
+    pub fn add_item(&mut self, title: String, description: String, src: String, price: Balance) {
+        let item_id = self.items.len();
+        let seller = env::predecessor_account_id();
 
         // 판매글 등록
         self.items.push(Item {
             seller: seller.clone(),
             title: title,
             description: description,
-            price: env::attached_deposit(),
+            price: price,
             item_id: item_id,
             state: State::ONSALE,
             src: src,
@@ -44,26 +41,24 @@ impl Contract {
 
         // 유저정보에 판매글 번호 등록
         if !self.users.contains_key(&seller) {
-            self.users.insert(
-                seller.clone(),
-                UserInfo::new(&seller),
-            );
+            self.users.insert(seller.clone(), UserInfo::new(&seller));
         }
         self.users
             .get_mut(&env::predecessor_account_id())
             .unwrap()
             .items_index
-            .push(item_id);
+            .push(item_id.clone());
 
         // 오더에 추가
         let mut prefix = Vec::with_capacity(33);
         prefix.push(b'w');
         prefix.extend(env::sha256(self.items.len().to_string().as_bytes()));
-        self.orders.insert(self.items.len()-1, UnorderedSet::new(prefix));
+        self.orders
+            .insert(item_id, UnorderedSet::new(prefix));
     }
 
     // 판매글 가져오기
-    pub fn get_item(&self, item_id:ItemId) -> &Item {
+    pub fn get_item(&self, item_id: ItemId) -> &Item {
         self.items.get(item_id).unwrap()
     }
 
@@ -74,6 +69,7 @@ impl Contract {
             Some(T) => T
                 .items_index
                 .iter()
+                .rev()
                 .map(|idx| self.items.get(*idx).unwrap())
                 .collect(),
         }
