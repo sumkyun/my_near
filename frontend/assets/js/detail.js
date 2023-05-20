@@ -1,8 +1,10 @@
 import 'regenerator-runtime/runtime';
 import { Wallet } from '../../near-wallet';
 
-
 const CONTRACT_ADDRESS = process.env.CONTRACT_NAME;
+//const CONTRACT_ADDRESS = "dev-1684582956578-27867779489882";
+
+console.log(process.env.CONTRACT_NAME, 'process.env.CONTRACT_NAME')
 
 // When creating the wallet you can optionally ask to create an access key
 // Having the key enables to call non-payable methods without interrupting the user to sign
@@ -19,6 +21,7 @@ window.onload = async () => {
     }
 
     console.log("window loaded");
+    console.log(wallet);
     const params = new URLSearchParams(window.location.search);
     const idx = params.get('idx');
     getItem2(idx);
@@ -28,7 +31,7 @@ async function getItem2(i) {
     i = parseInt(i);
     const item = await wallet.viewMethod({
         method: 'get_item',
-        args: { idx: i },
+        args: { item_id: i },
         contractId: CONTRACT_ADDRESS
     });
 
@@ -66,7 +69,7 @@ async function getItem2(i) {
                 <div class="col-sm-6">
                     <a href="" class="hz-profile creator media mb-4 mb-sm-0">
                         <div class="avatar">
-                            <img src="assets/img/media/creator-avatar.png" alt="">
+                            <img src="${item.src}" alt="">
                         </div>
                         <div class="content media-body">
                             <h6>Seller</h6>
