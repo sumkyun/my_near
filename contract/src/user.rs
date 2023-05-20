@@ -18,11 +18,22 @@ impl UserInfo {
         let mut prefix3 = Vec::with_capacity(33);
         prefix3.push(b'x');
         prefix3.extend(env::sha256(id.as_bytes()));
-        
+
         UserInfo {
             items_index: Vector::new(prefix1),
             trades_index: Vector::new(prefix2),
-            orders_index:UnorderedSet::new(prefix3),
+            orders_index: UnorderedSet::new(prefix3),
         }
     }
 }
+
+// #[near_bindgen]
+// impl Contract{
+//     pub fn get_user_items(&self){
+//         let mut vec=vec![];
+//         if self.users.contains_key(env::predecessor_account_id()){
+//             for item_id in self.users.get(env::predecessor_account_id()).unwrap()
+
+//         }
+//     }
+// }
