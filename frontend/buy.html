@@ -10,7 +10,10 @@
     <meta name="description" content="">
     <meta name="keywords" content="">
 
-    <!-- Web Fonts ----->
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="favicon.png">
+
+    <!-- Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
     <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@500;600;700&amp;family=Roboto:wght@400;700&amp;display=swap" rel="stylesheet">
@@ -27,6 +30,9 @@
     <!-- ======= Magnific Popup ======= -->
     <link rel="stylesheet" href="assets/plugins/magnific-popup/magnific-popup.css">
 
+    <!-- ======= Nice Select ======= -->
+    <link rel="stylesheet" href="assets/plugins/nice-select/nice-select.css">
+
     <!-- ======= Main Stylesheet ======= -->
     <link rel="stylesheet" href="assets/css/style.css">
 
@@ -34,7 +40,7 @@
     <link rel="stylesheet" href="assets/css/custom.css">
 </head>
 
-<body class="bg-img" style="background-image: url(&quot;assets/img/bg/page-bg.png&quot;);">
+<body>
 
     <!-- Preloader -->
     <div class="preloader" style="display: none;">
@@ -47,9 +53,9 @@
     <!-- Header -->
     <header class="header" style="height: 0px;">
         <!-- Header Main -->
-        <div class="header-main love-sticky fixed-top">
+        <div class="header-main style--three love-sticky">
             <div class="container">
-                <div class="header-inner position-relative">
+                <div class="header-inner position-relative px-0 mt-0 bg-transparent">
                     <div class="row align-items-center">
                         <div class="col-lg-4 col-md-6 col-sm-9 col-6">
                             <div class="d-flex align-items-center">
@@ -63,7 +69,15 @@
                                 <!-- End of Logo -->
 
                                 <!-- Search Form -->
-                                
+                                <form class="search-form d-none d-sm-block ms-4" action="#">
+                                    <div class="form-group">
+                                        <button type="submit">
+                                            <img src="assets/img/icons/search-gradient.svg" class="svg" alt="">
+                                        </button>
+
+                                        <input type="text" class="form-control mb-0" placeholder="Search item…">
+                                    </div>
+                                </form>
                                 <!-- End Search Form -->
                             </div>
                         </div>
@@ -72,16 +86,27 @@
                             <div class="nav-wrapper d-flex align-items-center">
                                 
 
-                                <div class="d-none d-md-flex align-items-center ms-4">
-                                    
-
-                                    <div class="dropdown ml-10">
+                                <div class="d-flex align-items-center">
+                                    <div class="dropdown ms-3">
                                         <a href="#" class="user-avatar dropdown-toggle" data-bs-toggle="dropdown">
                                             <img src="assets/img/media/user.png" alt="">
                                             <span class="user-status">
                                                 <img src="assets/img/icons/check.svg" class="svg" alt="">
                                             </span>
                                         </a>
+
+                                        <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item" href="profile.html"><img src="assets/img/icons/profile.svg" alt="">
+                                                    Profile</a></li>
+                                            <li><a class="dropdown-item" href="create.html"><img src="assets/img/icons/create.svg" alt=""> Create</a>
+                                            </li>
+                                            <li><a class="dropdown-item" href="collection.html"><img src="assets/img/icons/collection.svg" alt="">
+                                                    Collection</a></li>
+                                            <li><a class="dropdown-item" href="wallet.html"><img src="assets/img/icons/wallet.svg" alt=""> Wallet</a>
+                                            </li>
+                                            <li><a class="dropdown-item" href="explore.html"><img src="assets/img/icons/explore.svg" alt="">
+                                                    Explore</a></li>
+                                        </ul>
                                     </div>
                                 </div>
                             </div>
@@ -94,53 +119,55 @@
     </header>
     <!-- End Header -->
 
-    <!-- Banner -->
-    <div class="banner ov-hidden">
-        <div id="particles" class="bg-img"><canvas class="particles-js-canvas-el" width="1399" height="7560" style="width: 100%; height: 1000%;"></canvas></div>
+    <!-- Author -->
+    <div class="author-area">
+        
+    </div>
+    <!-- End Author -->
+
+    <!-- Create Collectible -->
+    <section class="pt-120 pb-90">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-6 offset-lg-3 d-flex justify-content-center align-items-center">
-                    <!-- Banner Content -->
-                    <div class="banner-content text-white mt-xl-5 pt-xl-2 mb-5 mb-lg-0">
-                        <h1>Our Market</h1>
-                        <ul class="list-info text-white">
-                            <li>
-                                <h4><span class="counter">3</span>k<span class="c1">+</span></h4>
-                                <h6>Items</h6>
-                            </li>
-                            <li>
-                                <h4><span class="counter">9</span>k<span class="c1">+</span></h4>
-                                <h6>Seller</h6>
-                            </li>
-                            <li>
-                                <h4><span class="counter">6</span>k<span class="c1">+</span></h4>
-                                <h6>Buyer</h6>
-                            </li>
-                        </ul>
-                        <div class="button-group">
-                            <a href="buy.html" class="btn">
-                                <img src="assets/img/icons/discover.svg" alt="" class="svg">
-                                Buy
-                            </a>
-                            <a href="" class="btn">
-                                <img src="assets/img/icons/discover.svg" alt="" class="svg">
-                                Sell
-                            </a>
-                            <a href="" class="btn">
-                                <img src="assets/img/icons/discover.svg" alt="" class="svg">
-                                Trade
-                            </a>
-
-                        </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <!-- Section Title -->
+                    <div class="section-title text-center text-white">
+                        <h2>Item lists</h2>
+                        <h3>Choose What You Want!
+                        </h3>
                     </div>
-                    <!-- End Banner Content -->
+                    <!-- End Section Title -->
                 </div>
-
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6">
+                    <!-- Single Create -->
+                    <div class="create-box">
+                        <a href="upload.html">
+                            <img src="assets/img/media/single-upload.png" alt="">
+                            <h3>Skirt</h3>
+                        </a>
+                    </div>
+                    <!-- End Single Create -->
+                </div>
+                <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6">
+                    <!-- Multiple Create -->
+                    <div class="create-box">
+                        <a href="upload.html">
+                            <img src="assets/img/media/multiple-upload.png" alt="">
+                            <h3>Mu</h3>
+                        </a>
+                    </div>
+                    <!-- End Multiple Create -->
+                </div>
             </div>
         </div>
-    </div>
-    <!-- End Banner -->
+    </section>
+    <!-- End Create Collectible -->
 
+    <!-- Footer -->
+    
+    <!-- End Footer -->
 
     <!-- Back to Top Button -->
     <a href="#" class="back-to-top">
@@ -149,11 +176,11 @@
     <!-- End Back to Top Button -->
 
 
-   <!--======= jQuery Library =======-->
+    <!-- ======= jQuery Library ======= -->
     <script src="assets/js/jquery.min.js"></script>
 
     <!-- ======= Bootstrap Bundle JS ======= -->
-    <!-- <script src="assets/js/bootstrap.bundle.min.js"></script>-->
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
 
     <!-- ======= Particles JS ======= -->
     <script src="assets/plugins/particles/particles.min.js"></script>
@@ -162,31 +189,31 @@
     <script src=" assets/js/menu.min.js"></script>
 
     <!-- ======= Swiper JS ======= -->
-    <!-- <script src="assets/plugins/swiper/swiper-bundle.min.js"></script> -->
+    <script src="assets/plugins/swiper/swiper-bundle.min.js"></script>
 
     <!-- ======= Magnific Popup JS ======= -->
-    <!-- <script src="assets/plugins/magnific-popup/jquery.magnific-popup.min.js"></script> -->
+    <script src="assets/plugins/magnific-popup/jquery.magnific-popup.min.js"></script>
 
     <!-- ======= Countdown JS ======= -->
-    <!-- <script src="assets/plugins/countdown/countdown.min.js"></script> -->
+    <script src="assets/plugins/countdown/countdown.min.js"></script>
 
     <!-- ======= Nice select JS ======= -->
-    <!-- <script src="assets/plugins/nice-select/jquery.nice-select.min.js"></script> -->
+    <script src="assets/plugins/nice-select/jquery.nice-select.min.js"></script>
 
     <!-- ======= Isotope JS ======= -->
-    <!-- <script src="assets/plugins/Isotope/isotope.pkgd.js"></script> -->
+    <script src="assets/plugins/Isotope/isotope.pkgd.js"></script>
 
     <!-- ======= Wayoints JS ======= -->
-    <!-- <script src="assets/plugins/counterup/waypoints.min.js"></script> -->
+    <script src="assets/plugins/counterup/waypoints.min.js"></script>
 
     <!-- ======= CounterUp JS ======= -->
-    <!-- <script src="assets/plugins/counterup/jquery.counterup.min.js"></script> -->
+    <script src="assets/plugins/counterup/jquery.counterup.min.js"></script>
 
     <!-- ======= Main JS ======= -->
     <script src="assets/js/main.js"></script>
 
     <!-- ======= Custom JS ======= -->
-    <!-- <script src="assets/js/custom.js"></script> --> 
+    <script src="assets/js/custom.js"></script>
 
 
 </body></html>
