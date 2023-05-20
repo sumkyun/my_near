@@ -8,7 +8,7 @@ impl Contract {
 
         self.orders.get_mut(&item_id).unwrap().insert(buyer.clone());
         if !self.users.contains_key(&buyer) {
-            self.users.insert(buyer, UserInfo::new(&buyer));
+            self.users.insert(buyer.clone(), UserInfo::new(&buyer));
         }
         self.users
             .get_mut(&buyer)
