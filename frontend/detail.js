@@ -2,7 +2,7 @@ import 'regenerator-runtime/runtime';
 import { Wallet } from './near-wallet';
 
 const CONTRACT_ADDRESS = process.env.CONTRACT_NAME;
-//const CONTRACT_ADDRESS = "dev-1684582956578-27867779489882";
+//const CONTRACT_ADDRESS = "dev-1684614957495-79136120785832"
 
 console.log(process.env.CONTRACT_NAME, 'process.env.CONTRACT_NAME')
 

@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Page Title -->
+    <title>profile</title>
+    <script>
+        function showAll() {
+            var items = document.getElementsByClassName("item-trade");
+            for (var i = 0; i < items.length; i++) {
+                items[i].style.display = "block";
+            }
+        }
+
+        function showSales() {
+            var items = document.getElementsByClassName("item-trade");
+            for (var i = 0; i < items.length; i++) {
+                var status = items[i].getAttribute("data-status");
+                if (status === "구매요청") {
+                    items[i].style.display = "block";
+                } else {
+                    items[i].style.display = "none";
+                }
+            }
+        }
+
+        function showPurchase() {
+            var items = document.getElementsByClassName("item-trade");
+            for (var i = 0; i < items.length; i++) {
+                var status = items[i].getAttribute("data-status");
+                if (status === "판매승인") {
+                    items[i].style.display = "block";
+                } else {
+                    items[i].style.display = "none";
+                }
+            }
+        }
+    </script>
+    <script src="profile.js" type="module"></script>
+
+    <!-- Meta Data -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="favicon.png" />
+
+    <!-- Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lexend:wght@500;600;700&family=Roboto:wght@400;700&display=swap"
+        rel="stylesheet">
+
+    <!-- ======= FontAwesome ======= -->
+    <link rel="stylesheet" href="assets/css/all.min.css" />
+
+    <!-- ======= Bootstrap ======= -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+
+    <!-- ======= Swiper Bundle ======= -->
+    <link rel="stylesheet" href="assets/plugins/swiper/swiper-bundle.min.css" />
+
+    <!-- ======= Magnific Popup ======= -->
+    <link rel="stylesheet" href="assets/plugins/magnific-popup/magnific-popup.css" />
+
+    <!-- ======= Nice Select ======= -->
+    <link rel="stylesheet" href="assets/plugins/nice-select/nice-select.css" />
+
+    <!-- ======= Main Stylesheet ======= -->
+    <link rel="stylesheet" href="assets/css/style.css" />
+
+    <!-- ======= Custom Stylesheet ======= -->
+    <link rel="stylesheet" href="assets/css/custom.css" />
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="header" style="height: 0px;">
+        <!-- Header Main -->
+        <div class="header-main style--three love-sticky">
+            <div class="container">
+                <div class="header-inner position-relative px-0 mt-0 bg-transparent">
+                    <div class="row align-items-center">
+                        <div class="col-lg-4 col-md-6 col-sm-9 col-6">
+                            <div class="d-flex align-items-center">
+                                <!-- Start Logo -->
+                                <div class="logo">
+                                    <a href="index.html">
+                                        <img src="assets/img/logo.svg" class="main-logo" alt="">
+                                        <img src="assets/img/sticky-logo.svg" class="sticky-logo" alt="">
+                                    </a>
+                                </div>
+                                <!-- End of Logo -->
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Header Main -->
+    </header>
+    <!-- End Header -->
+
+    <!-- Author -->
+    <div class="author-area sep-bottom">
+        <div class="author-cover author-cover-edit" data-bg-img="assets/img/profile_bg.png">
+        </div>
+        <div class="author-info">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6 d-flex justify-content-center justify-content-lg-start">
+                        <!-- Profile -->
+                        <div class="author-profile text-center text-white d-inline-block pb-2 pb-lg-4">
+                            <div class="user-avatar">
+                                <img src="assets/img/profile_img.jpeg" alt="">
+                            </div>
+
+                            <h5 id="name1" class="user_name text-white">이름</h5>
+                        </div>
+                        <!-- End Profile -->
+                    </div>
+                    <div class="col-lg-6">
+                        <div
+                            class="d-flex flex-wrap align-items-center mt-10 justify-content-center justify-content-lg-end mb-3 mb-lg-0">
+                            <!-- Copy Clipboard -->
+                            <div class="copy-clipboard-wrap mr-10 mb-10">
+                                <input class="form-control" id="get-link" type="text" value="계정"
+                                    readonly>
+
+                                <!-- Copy Button -->
+                                <a href="#" id="copy-link-btn">
+                                    <img src="assets/img/icons/copy-icon.svg" alt="" class="svg">
+                                </a>
+                                <!-- End Copy Button -->
+                            </div>
+                            <!-- End Copy Clipboard -->
+
+                            <!-- Share -->
+                            <div class="dropdown mr-10 mb-10">
+                                <button class="btn-circle style--two dropdown-toggle" data-bs-toggle="dropdown">
+                                    <img src="assets/img/icons/share-grey.svg" alt="" class="svg">
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" target="_blank" href="https://www.facebook.com/"><img
+                                                src="assets/img/icons/facebook.svg" alt=""> Share on Facebook</a>
+                                    </li>
+                                    <li><a class="dropdown-item" target="_blank" href="https://www.twitter.com/"><img
+                                                src="assets/img/icons/twitter.svg" alt=""> Share on Twitter</a></li>
+                                    <li><a class="dropdown-item" target="_blank" href="https://www.Instagram.com/"><img
+                                                src="assets/img/icons/instagram.svg" alt=""> Share on Instagram</a>
+                                    </li>
+                                    <li><a class="dropdown-item" target="_blank" href="https://www.linkedin.com/"><img
+                                                src="assets/img/icons/linkedin.svg" alt=""> Share on Linkedin</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!-- End Share -->
+
+                            <a href="#" class="btn btn-border style--two fz-13 mr-10 mb-10">Follow</a>
+
+                            <!-- Options -->
+                            <div class="dropdown mb-10">
+                                <button class="btn-circle style--two dropdown-toggle" data-bs-toggle="dropdown">
+                                    <img src="assets/img/icons/option-icon.svg" alt="" class="svg">
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" target="_blank" href="#">Report</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!-- End Options -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Author -->
+
+    <!-- Profile -->
+    <section class="pt-120 pb-120">
+        <div class="container">
+            <div class="row mb-50">
+                <div class="col-xl-9 order-1 order-xl-0">
+                    <!-- Tab Buttons -->
+                    <ul class="nav tab-buttons justify-content-center justify-content-xl-start">
+                        <li>
+                            <button onclick="showAll()" class="active select-rounded text-uppercase lg" data-bs-toggle="tab"
+                                data-bs-target="#collected">ALL ITEMS</button>
+                        </li>
+                        <li>
+                            <button onclick="showSales()" class="select-rounded text-uppercase lg" data-bs-toggle="tab"
+                                data-bs-target="#created">PURCHASE REQUEST</button>
+                        </li>
+                        <li>
+                            <button onclick="showPurchase()" class="select-rounded text-uppercase lg" data-bs-toggle="tab"
+                                data-bs-target="#favorited">SALES APPROVE</button>
+                        </li>
+                    </ul>
+                    <!-- End Tab Buttons -->
+                </div>
+                <div class="col-xl-3 order-0 order-xl-1 mb-4 mb-xl-0">
+                </div>
+            </div>
+
+            <div class="tab-content">
+                <div class="tab-pane fade show active" id="ALL ITEMS">
+                    <div id="items" class="row">
+                        <div class="col-lg-12 d-flex justify-content-center mt-30">
+                            <a id="aaaaa" class="btn"><img src="assets/img/icons/btn-loadmore.svg" alt="" class="svg">
+                                Load
+                                More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Profile -->
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <!-- CopyRight Content -->
+                        <div class="copyright-content text-center text-white">
+                            Our Market
+                        </div>
+                        <!-- End CopyRight Content -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- End Footer -->
+
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top">
+        <i class="fas fa-long-arrow-alt-up"></i>
+    </a>
+    <!-- End Back to Top Button  -->
+
+
+</body>
+
+</html>

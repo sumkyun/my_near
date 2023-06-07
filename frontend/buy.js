@@ -2,7 +2,7 @@ import 'regenerator-runtime/runtime';
 import { Wallet } from './near-wallet';
 
 const CONTRACT_ADDRESS = process.env.CONTRACT_NAME;
-//const CONTRACT_ADDRESS = "dev-1684600008709-31870777384001";
+//const CONTRACT_ADDRESS = "dev-1684613712897-27339709791805";
 
 // When creating the wallet you can optionally ask to create an access key
 // Having the key enables to call non-payable methods without interrupting the user to sign
@@ -18,6 +18,7 @@ window.onload = async () => {
         signedOutFlow();
     }
 
+    console.log(CONTRACT_ADDRESS);
     console.log(wallet);
     console.log("window loaded");
     getItem();
@@ -30,6 +31,7 @@ async function getItem() {
         contractId: CONTRACT_ADDRESS
     });
 
+    console.log("itemNum");
     console.log(itemNum);
 
     const itemListElement = document.getElementById("item-list");
